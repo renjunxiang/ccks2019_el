@@ -3,7 +3,7 @@ CCKS 2019 Task 2: Entity Recognition and Linking
 
 [![](https://img.shields.io/badge/Python-3.6-blue.svg)](https://www.python.org/)
 [![](https://img.shields.io/badge/torch-1.1.0-brightgreen.svg)](https://pypi.org/project/torch/1.1.0)
-[![](https://img.shields.io/badge/pytorch--pretrained--bert-1.1.0-brightgreen.svg)](https://pypi.org/project/pytorch-pretrained-bert/0.6.2)
+[![](https://img.shields.io/badge/pytorch--pretrained--bert-0.6.2-brightgreen.svg)](https://pypi.org/project/pytorch-pretrained-bert/0.6.2)
 [![](https://img.shields.io/badge/keras-2.2.4-brightgreen.svg)](https://pypi.org/project/keras/2.2.4)
 [![](https://img.shields.io/badge/numpy-1.16.2-brightgreen.svg)](https://pypi.python.org/pypi/numpy/1.16.2)
 
@@ -33,7 +33,7 @@ CCKS 2019 中文短文本的实体链指 (CCKS 2019 Task 2: Entity Recognition a
 1.下载词向量，运行脚本./embedding.py，抽取出字向量，保存在./data_deal中，以便后续nn.embedding的时候可以导入<br><br>
 
 ### **训练模型**
-这里将网络拆开，实际训练中由于实体识别和实体消岐无法同时达到最佳，所以需要先训练实体识别，再载入实体识别最优模型权重训练消岐<br>
+这里将网络拆开，实际训练中由于实体识别和实体消岐无法同时达到最佳，所以需要先训练实体识别，再载入实体识别最优模型权重训练消岐<br><br>
 1.将bert预训练放入pretrain中，也可以自行修改训练脚本中的位置<br><br>
 2.运行脚本./train_part_ner.py，输入网络参数，实体识别模型保存在./results_ner中：python train_part_ner.py --cuda 0 --pretrain bert --num_layers 3 --hidden_dim 768 --loss_weight 2 --epochs 3 --k 0.820<br><br>
 3.运行脚本./train_part_link.py，输入实体识别的模型id，完整模型保存在./results中：python train_part_link.py --cuda 0 --pretrain bert --num_layers 3 --hidden_dim 768 --loss_weight 2 --ner_id 2 --num_words 10000 --max_len 400 --epochs 25 --lr 0.001 --k 0.9030 --n 2<br><br>
