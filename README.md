@@ -27,7 +27,7 @@ CCKS 2019 中文短文本的实体链指 (CCKS 2019 Task 2: Entity Recognition a
 * word_index.pkl，文本编码词典信息，预处理dev、eval数据会需要<br>
 * alias_data.pkl，知识库信息，会生成“实体-id-描述”的字典，用于训练过程的消岐抽样和推断过程的实体过滤<br>
 * subject_data.pkl，知识库信息，会生成“id-描述”的字典，用于训练过程的消岐抽样<br>
-* ./10000/xxx_data_process.pkl，预处理转换，编码保留前10000个字，后续的训练和推断都基于此<br><br>
+* ./10000/xxx_data.pkl，预处理转换，编码保留前10000个字，后续的训练和推断都基于此<br><br>
 
 ### **获取嵌入层权重**
 1.下载词向量，运行脚本./embedding.py，抽取出字向量，保存在./data_deal中，以便后续nn.embedding的时候可以导入<br><br>
@@ -37,7 +37,7 @@ CCKS 2019 中文短文本的实体链指 (CCKS 2019 Task 2: Entity Recognition a
 1.将bert预训练放入pretrain中，也可以自行修改训练脚本中的位置<br><br>
 2.运行脚本./train_part_ner.py，输入网络参数，实体识别模型保存在./results_ner中：python train_part_ner.py --cuda 0 --pretrain bert --num_layers 3 --hidden_dim 768 --loss_weight 2 --epochs 3 --k 0.820<br><br>
 3.运行脚本./train_part_link.py，输入实体识别的模型id，完整模型保存在./results中：python train_part_link.py --cuda 0 --pretrain bert --num_layers 3 --hidden_dim 768 --loss_weight 2 --ner_id 2 --num_words 10000 --max_len 400 --epochs 25 --lr 0.001 --k 0.9030 --n 2<br><br>
-4.模型和每次的预测结果都保存在./models/10000中，后续ensemble需要<br><br>
+4.模型和每次的预测结果都保存在./results/10000中，后续ensemble需要<br><br>
 
 ### **测试模型**
 1.运行脚本./predict.py，推断eval数据集<br><br>
