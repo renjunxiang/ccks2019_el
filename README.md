@@ -10,6 +10,9 @@ CCKS 2019 Task 2: Entity Recognition and Linking
 ## **项目简介**
 CCKS 2019 中文短文本的实体链指 (CCKS 2019 Task 2: Entity Recognition and Linking)，<https://biendata.com/competition/ccks_2019_el/>，第十名代码分享。<br>
 
+## **比赛数据**
+根据网友需求，提供数据地址，需遵守CCKS2019及百度的相关规定：此数据仅可用于学术交流和非商业需求，如违背数据许可协议，百度公司将保留追究其法律责任的权利。链接: <https://pan.baidu.com/s/1gAVCEP7uXHCdf1AeRooyeg>，提取码: pcw6 。
+
 ## **整体思路**
 * 实体识别采用BERT+RNN+指针网络<br>
 * 实体消岐由于BERT太慢，采用预训练词向量+CNN+二分类器<br>
